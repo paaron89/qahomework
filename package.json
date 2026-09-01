@@ -1,0 +1,27 @@
+{
+  "name": "qahomework",
+  "version": "1.0.0",
+  "description": "This is a QA homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paaron89/qahomework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/paaron89/qahomework/issues"
+  },
+  "homepage": "https://github.com/paaron89/qahomework#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}
