@@ -11,4 +11,12 @@ module.exports = {
     username: process.env.APP_USERNAME || 'testron',
     password: process.env.APP_PASSWORD || 'test123',
   },
+
+  /** Credentials that must authenticate successfully. */
+  validUser: {
+    username: process.env.APP_ADMIN_USERNAME || 'admin',
+    password: process.env.APP_ADMIN_PASSWORD || 'demo',
+    /** initials shown in the header avatar after login */
+    avatarInitials: 'AD',
+  },
 };

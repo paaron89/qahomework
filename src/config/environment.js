@@ -11,5 +11,6 @@ module.exports = {
   baseUrl: BASE_URL,
   routes: {
     login: '/auth/login',
+    home: '/home',
   },
 };
