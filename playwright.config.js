@@ -1,5 +1,16 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const { defineBddConfig } = require('playwright-bdd');
+
+/**
+ * BDD (feature file) suite — compiled into Playwright tests under a generated
+ * directory. Only the `api` project below runs these; the browser projects are
+ * untouched.
+ */
+const bddApiTestDir = defineBddConfig({
+  features: 'features/**/*.feature',
+  steps: 'steps/**/*.js',
+});
 
 /**
  * Playwright configuration.
@@ -18,15 +29,27 @@ module.exports = defineConfig({
   projects: [
     {
       name: 'chromium',
+      testDir: './tests',
       use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'firefox',
+      testDir: './tests',
       use: { ...devices['Desktop Firefox'] },
     },
     {
       name: 'webkit',
+      testDir: './tests',
       use: { ...devices['Desktop Safari'] },
+    },
+    {
+      // API / BDD suite — no browser, its own base URL.
+      name: 'api',
+      testDir: bddApiTestDir,
+      use: {
+        baseURL: process.env.API_BASE_URL || 'https://jsonplaceholder.typicode.com',
+        extraHTTPHeaders: { Accept: 'application/json' },
+      },
     },
   ],
 });
