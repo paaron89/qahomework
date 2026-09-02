@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "bddgen && playwright test",
-    "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui",
-    "test:login": "playwright test tests/login.spec.js",
-    "test:login:headed": "playwright test tests/login.spec.js --headed",
+    "test:headed": "bddgen && playwright test --headed",
+    "test:ui": "bddgen && playwright test --ui",
+    "test:login": "bddgen && playwright test --project=ui-chromium --project=ui-firefox --project=ui-webkit",
+    "test:login:headed": "bddgen && playwright test --project=ui-chromium --project=ui-firefox --project=ui-webkit --headed",
     "test:api": "bddgen && playwright test --project=api",
     "report": "playwright show-report"
   },

@@ -1,9 +1,9 @@
 const { test: base } = require('playwright-bdd');
 const { expect } = require('@playwright/test');
-const { HttpClient } = require('../src/api/HttpClient');
-const { TasksApi } = require('../src/api/TasksApi');
-const { ApiWorld } = require('../src/support/ApiWorld');
-const { apiBaseUrl } = require('../src/config/apiEnvironment');
+const { HttpClient } = require('../../src/api/HttpClient');
+const { TasksApi } = require('../../src/api/TasksApi');
+const { ApiWorld } = require('../../src/support/ApiWorld');
+const { apiBaseUrl } = require('../../src/config/apiEnvironment');
 
 /**
  * BDD test fixtures — the composition root for the API suite.
