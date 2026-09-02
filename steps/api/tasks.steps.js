@@ -1,7 +1,7 @@
 const { createBdd } = require('playwright-bdd');
 const { test, expect } = require('./fixtures');
-const { TaskBuilder } = require('../src/builders/TaskBuilder');
-const { validateTask } = require('../src/support/TaskSchema');
+const { TaskBuilder } = require('../../src/builders/TaskBuilder');
+const { validateTask } = require('../../src/support/TaskSchema');
 
 /**
  * Step definitions for features/tasks.feature

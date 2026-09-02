@@ -3,13 +3,21 @@ const { defineConfig, devices } = require('@playwright/test');
 const { defineBddConfig } = require('playwright-bdd');
 
 /**
- * BDD (feature file) suite — compiled into Playwright tests under a generated
- * directory. Only the `api` project below runs these; the browser projects are
- * untouched.
+ * Two independent BDD suites, each with its own features, steps and generated
+ * output directory. Keeping them separate means the UI fixtures
+ * (steps/ui/fixtures.js) and API fixtures (steps/api/fixtures.js) never have to
+ * be merged — each `defineBddConfig` owns its own `createBdd(test)` instance.
  */
-const bddApiTestDir = defineBddConfig({
-  features: 'features/**/*.feature',
-  steps: 'steps/**/*.js',
+const uiBddDir = defineBddConfig({
+  features: 'features/ui/**/*.feature',
+  steps: 'steps/ui/**/*.js',
+  outputDir: '.features-gen/ui',
+});
+
+const apiBddDir = defineBddConfig({
+  features: 'features/api/**/*.feature',
+  steps: 'steps/api/**/*.js',
+  outputDir: '.features-gen/api',
 });
 
 /**
@@ -17,7 +25,6 @@ const bddApiTestDir = defineBddConfig({
  * See https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -27,6 +34,24 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
   },
   projects: [
+    // --- UI BDD suite (features/ui) across browsers ---
+    {
+      name: 'ui-chromium',
+      testDir: uiBddDir,
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'ui-firefox',
+      testDir: uiBddDir,
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'ui-webkit',
+      testDir: uiBddDir,
+      use: { ...devices['Desktop Safari'] },
+    },
+
+    // --- Plain Playwright specs in ./tests (example.spec.js) ---
     {
       name: 'chromium',
       testDir: './tests',
@@ -42,10 +67,11 @@ module.exports = defineConfig({
       testDir: './tests',
       use: { ...devices['Desktop Safari'] },
     },
+
+    // --- API BDD suite (features/api) — no browser ---
     {
-      // API / BDD suite — no browser, its own base URL.
       name: 'api',
-      testDir: bddApiTestDir,
+      testDir: apiBddDir,
       use: {
         baseURL: process.env.API_BASE_URL || 'https://jsonplaceholder.typicode.com',
         extraHTTPHeaders: { Accept: 'application/json' },
