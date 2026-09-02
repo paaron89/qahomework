@@ -8,6 +8,7 @@ Automated test suite built with **[Playwright](https://playwright.dev/)** and
 **[playwright-bdd](https://vitalets.github.io/playwright-bdd/)** (Gherkin feature
 files), organised with a SOLID, layered structure.
 
+- **Task 1 — Manual testing** (test cases + bug report): [`docs/task1-manual-testing.md`](docs/task1-manual-testing.md)
 - **Task 2 — UI login tests** against `https://angular-authentication.netlify.app`
 - **Task 3 — API tests** against `https://jsonplaceholder.typicode.com` (`/todos` as the task resource)
 
@@ -61,6 +62,14 @@ All scripts are defined in **`package.json` → `"scripts"`**.
 | `npm run test:headed` | All tests with a visible browser |
 | `npm run test:ui` | Opens Playwright's interactive UI mode (watch / debug) |
 | `npm run report` | Opens the HTML report from the last run |
+
+---
+
+## Task 1 — Manual testing
+
+Not automated. Test cases (Gherkin format) and the bug report live in
+[`docs/task1-manual-testing.md`](docs/task1-manual-testing.md), with bug
+screenshots under [`docs/evidence/`](docs/evidence/).
 
 ---
 
