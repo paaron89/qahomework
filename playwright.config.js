@@ -51,23 +51,6 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
 
-    // --- Plain Playwright specs in ./tests (example.spec.js) ---
-    {
-      name: 'chromium',
-      testDir: './tests',
-      use: { ...devices['Desktop Chrome'] },
-    },
-    {
-      name: 'firefox',
-      testDir: './tests',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      testDir: './tests',
-      use: { ...devices['Desktop Safari'] },
-    },
-
     // --- API BDD suite (features/api) — no browser ---
     {
       name: 'api',
