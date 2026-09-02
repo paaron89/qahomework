@@ -4,11 +4,12 @@
   "description": "This is a QA homework",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
+    "test": "bddgen && playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:login": "playwright test tests/login.spec.js",
     "test:login:headed": "playwright test tests/login.spec.js --headed",
+    "test:api": "bddgen && playwright test --project=api",
     "report": "playwright show-report"
   },
   "repository": {
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/paaron89/qahomework#readme",
   "devDependencies": {
-    "@playwright/test": "^1.62.1"
+    "@playwright/test": "^1.62.1",
+    "playwright-bdd": "^9.2.0"
   }
 }
