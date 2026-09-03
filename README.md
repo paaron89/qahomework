@@ -2,15 +2,16 @@
 
 This is a QA homework.
 
-Hope we will meet each other.
+Hope we will meet each other!
 
 Automated test suite built with **[Playwright](https://playwright.dev/)** and
 **[playwright-bdd](https://vitalets.github.io/playwright-bdd/)** (Gherkin feature
 files), organised with a SOLID, layered structure.
 
 - **Task 1 — Manual testing** (test cases + bug report): [`docs/task1-manual-testing.md`](docs/task1-manual-testing.md)
-- **Task 2 — UI login tests** against `https://angular-authentication.netlify.app`
-- **Task 3 — API tests** against `https://jsonplaceholder.typicode.com` (`/todos` as the task resource)
+- **Task 2 — UI login tests**: [`features/ui/login.feature`](features/ui/login.feature)
+- **Task 3 — API tests**: [`features/api/tasks.feature`](features/api/tasks.feature)
+- **Bonus tasks** — written answers under [`docs/`](docs/): [Docker](docs/bonus-task-docker.md), [JUnit + Selenium](docs/bonus-junit-selenium.md), [CI](docs/bonus-ci.md)
 
 ---
 
